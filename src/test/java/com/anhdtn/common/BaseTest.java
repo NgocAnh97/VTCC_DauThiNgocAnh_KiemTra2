@@ -5,6 +5,7 @@ import com.anhdtn.listeners.TestListener;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
@@ -28,7 +29,7 @@ public class BaseTest {
     }
 
     @AfterMethod
-    public void closeDriver() {
-        driver.quit();
+    public void closeDriver(ITestResult iTestResult) {
+        DriverManager.quit();
     }
 }

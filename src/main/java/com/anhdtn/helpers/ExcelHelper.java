@@ -44,7 +44,7 @@ public class ExcelHelper {
 
             this.excelFilePath = ExcelPath;
 
-            //adding all the column header names to the map 'columns'
+            //Adding all the column header names to the map 'columns'
             sh.getRow(0).forEach(cell -> {
                 columns.put(cell.getStringCellValue(), cell.getColumnIndex());
             });
@@ -87,7 +87,7 @@ public class ExcelHelper {
         return getCellData(columns.get(columnName), rowIndex);
     }
 
-    //set by column index
+    //Set by column index
     public void setCellData(String text, int columnIndex, int rowIndex) {
         try {
             row = sh.getRow(rowIndex);
@@ -117,7 +117,7 @@ public class ExcelHelper {
         }
     }
 
-    //set by column name
+    //Set by column name
     public void setCellData(String text, String columnName, int rowIndex) {
         try {
             row = sh.getRow(rowIndex);
@@ -204,7 +204,7 @@ public class ExcelHelper {
         return data;
     }
 
-    //Hàm này dùng cho trường hợp nhiều Field trong File Excel
+    //Trường hợp nhiều Field trong File Excel
     public int getColumns() {
         try {
             row = sh.getRow(0);

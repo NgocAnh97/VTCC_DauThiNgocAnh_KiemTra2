@@ -2,6 +2,7 @@ package com.anhdtn.keywords;
 
 import com.anhdtn.drivers.DriverManager;
 import com.anhdtn.utils.LogUtils;
+import com.aventstack.extentreports.Status;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -9,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
+import java.util.Set;
 
 public class WebUI {
     private static int TIMEOUT = 10;
@@ -16,10 +18,6 @@ public class WebUI {
     public static void openURL(String url) {
         DriverManager.getDriver().get(url);
         LogUtils.info("Open Url: " + url);
-    }
-
-    public static void logConsole(Object message) {
-        LogUtils.info(message);
     }
 
     public static WebElement getWebElement(By by) {
@@ -49,11 +47,19 @@ public class WebUI {
         LogUtils.info("Click element: " + by);
     }
 
-    public static String getElementText(By by) {
+    public static String getElementValue(By by) {
         waitForElementVisible(by);
         String text = DriverManager.getDriver().findElement(by).getAttribute("value");
+        LogUtils.info("Get value of element " + by);
+        LogUtils.info("==> Value: " + getWebElement(by).getAttribute("value"));
+        return text;
+    }
+
+    public static String getElementText(By by) {
+        waitForElementVisible(by);
+        String text = DriverManager.getDriver().findElement(by).getText();
         LogUtils.info("Get text of element " + by);
-        LogUtils.info("==> Text: " + getWebElement(by).getAttribute("value"));
+        LogUtils.info("==> Text: " + getWebElement(by).getText());
         return text;
     }
 
@@ -61,6 +67,10 @@ public class WebUI {
         String currentUrl = DriverManager.getDriver().getCurrentUrl();
         LogUtils.info("Get Current URL: " + currentUrl);
         return currentUrl;
+    }
+
+    public static void logConsole(Object message) {
+        LogUtils.info(message);
     }
 
     public static void waitForPageLoaded() {
@@ -89,6 +99,17 @@ public class WebUI {
                 Assert.fail("FAILED. Timeout waiting for page load.");
             }
         }
+    }
+
+    static String mainWindow = DriverManager.getDriver().getWindowHandle();
+
+    public static void switchToWindowTab() {
+        Set<String> windows = DriverManager.getDriver().getWindowHandles();
+        DriverManager.getDriver().switchTo().window((String)windows.toArray()[1]);
+    }
+
+    public static void switchToMainWindow() {
+        DriverManager.getDriver().switchTo().window(mainWindow);
     }
 
     public static void pressEnterKey(By by) {

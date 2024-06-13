@@ -18,9 +18,9 @@ import java.util.Date;
 import static org.monte.media.FormatKeys.*;
 import static org.monte.media.VideoFormatKeys.*;
 
-public class CaptureHelper extends ScreenRecorder{
+public class CaptureHelper extends ScreenRecorder {
 
-    // Record with Monte Media library
+    //Record with Monte Media library
     public static ScreenRecorder screenRecorder;
     public String name;
 
@@ -43,7 +43,7 @@ public class CaptureHelper extends ScreenRecorder{
         return new File(movieFolder, name + "-" + dateFormat.format(new Date()) + "." + Registry.getInstance().getExtension(fileFormat));
     }
 
-    // Start record video
+    //Start record video
     public static void startRecord(String methodName) {
         //Tạo thư mục để lưu file video vào
         File file = new File(SystemHelper.getCurrentDir() + PropertiesHelper.getValue("RECORDVIDEO_PATH"));
@@ -64,7 +64,7 @@ public class CaptureHelper extends ScreenRecorder{
         }
     }
 
-    // Stop record video
+    //Stop record video
     public static void stopRecord() {
         try {
             screenRecorder.stop();

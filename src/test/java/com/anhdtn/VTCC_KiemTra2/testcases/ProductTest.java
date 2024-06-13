@@ -10,20 +10,26 @@ public class ProductTest extends BaseTest {
     LoginPage loginPage;
     DashboardPage dashboardPage;
     ProductPage productPage;
+    String username = "admin@example.com";
+    String password = "123456";
 
     @Test(priority = 1)
-    public void testAddProductSuccess() {
+    public void testAddViewEditProductSuccess() {
         loginPage = new LoginPage();
-        dashboardPage = loginPage.loginCRM("admin@example.com", "123456");
+        dashboardPage = loginPage.loginCRM(username, password);
 
         productPage = dashboardPage.openProductPage();
-//        productPage.addProduct();
-//
-//        productPage.verifyAddProductUrl();
+        productPage.addProduct();
+
+        productPage.verifyAddProductUrl();
 
         productPage.searchProduct();
+        productPage.verifySearchProductUrl();
 
         productPage.viewProductDetail();
-//        productPage.verifyProductDetail();
+        productPage.verifyViewProductDetail();
+
+        productPage.editProductDetail();
+        productPage.verifyEditProductScreen();
     }
 }

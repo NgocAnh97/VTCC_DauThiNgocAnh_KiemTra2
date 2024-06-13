@@ -9,7 +9,7 @@ public class DashboardTest extends BaseTest {
     LoginPage loginPage;
     DashboardPage dashboardPage;
 
-    @Test(priority = 1)
+    @Test
     public void testDashboardPage() {
         loginPage = new LoginPage();
         dashboardPage = loginPage.loginCRM("admin@example.com", "123456");
