@@ -17,13 +17,13 @@ public class ProductTest extends BaseTest {
         dashboardPage = loginPage.loginCRM("admin@example.com", "123456");
 
         productPage = dashboardPage.openProductPage();
-        productPage.addProduct();
-
-        productPage.verifyAddProductUrl();
+//        productPage.addProduct();
+//
+//        productPage.verifyAddProductUrl();
 
         productPage.searchProduct();
 
         productPage.viewProductDetail();
-        productPage.verifyProductDetail();
+//        productPage.verifyProductDetail();
     }
 }

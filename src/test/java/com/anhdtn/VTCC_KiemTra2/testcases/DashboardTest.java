@@ -13,5 +13,6 @@ public class DashboardTest extends BaseTest {
     public void testDashboardPage() {
         loginPage = new LoginPage();
         dashboardPage = loginPage.loginCRM("admin@example.com", "123456");
+        dashboardPage.verifyDashboardPage();
     }
 }

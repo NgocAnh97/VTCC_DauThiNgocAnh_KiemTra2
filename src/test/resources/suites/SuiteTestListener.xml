@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite TestListener">
+    <listeners>
+        <listener class-name="com.anhdtn.listeners.TestListener"/>
+    </listeners>
+
+    <test name="Test TestListener">
+        <classes>
+            <class name="com.anhdtn.VTCC_KiemTra2.testcases.ProductTest">
+            </class>
+        </classes>
+    </test>
+</suite>

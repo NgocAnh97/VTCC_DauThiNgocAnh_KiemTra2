@@ -1,15 +1,11 @@
 package com.anhdtn.VTCC_KiemTra2.pages;
 
-import org.openqa.selenium.By;
 import com.anhdtn.keywords.WebUI;
+import org.openqa.selenium.By;
+import org.testng.Assert;
 
 public class DashboardPage {
     public DashboardPage() {
-    }
-
-    public void openPage(String menuName) {
-        WebUI.waitForPageLoaded();
-        WebUI.clickElement(By.xpath("//span[normalize-space()='" + menuName + "']"));
     }
 
     public ProductPage openProductPage() {
@@ -17,5 +13,7 @@ public class DashboardPage {
         return new ProductPage();
     }
 
-
+    public void verifyDashboardPage() {
+        Assert.assertEquals(WebUI.getCurrentUrl(), "https://cms.anhtester.com/admin");
+    }
 }
