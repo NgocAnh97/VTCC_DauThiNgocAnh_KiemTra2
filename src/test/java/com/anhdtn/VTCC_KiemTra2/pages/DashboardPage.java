@@ -9,11 +9,13 @@ public class DashboardPage {
     }
 
     public ProductPage openProductPage() {
-        WebUI.clickElement(By.xpath("//span[normalize-space()='Products']"));
+        WebUI.clickElement(productTab);
         return new ProductPage();
     }
 
     public void verifyDashboardPage() {
         Assert.assertEquals(WebUI.getCurrentUrl(), "https://cms.anhtester.com/admin");
     }
+
+    By productTab = By.xpath("//span[normalize-space()='Products']");
 }
